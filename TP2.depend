@@ -1,0 +1,28 @@
+# depslib dependency file v1.0
+1524022968 source:c:\users\nano\desktop\github\tp2\main.c
+	<stdio.h>
+	<stdlib.h>
+	"funciones_generales.h"
+	"estructuras.h"
+	"menus.h"
+
+1524022458 c:\users\nano\desktop\github\tp2\estructuras.h
+
+1524022791 c:\users\nano\desktop\github\tp2\menus.h
+
+1524024059 source:c:\users\nano\desktop\github\tp2\menus.c
+	<stdio.h>
+	"estructuras.h"
+	"arrays.h"
+	"funciones_generales.h"
+
+1524020965 source:c:\users\nano\desktop\github\tp2\funciones_generales.c
+	<stdio.h>
+	<stdlib.h>
+
+1524020972 c:\users\nano\desktop\github\tp2\funciones_generales.h
+
+1524024227 source:c:\users\nano\desktop\github\tp2\arrays.c
+
+1524021394 c:\users\nano\desktop\github\tp2\arrays.h
+
