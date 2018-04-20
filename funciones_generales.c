@@ -3,6 +3,7 @@
 
 void ejecutarEnConsola(const char *lineaDeComando)
 {
+    printf("\n");
     system(lineaDeComando);
 }
 

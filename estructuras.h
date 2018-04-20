@@ -1,6 +1,9 @@
 #define LARGO_ITEM_MENU 50
 #define NRO_MAX_OPCIONES_MENU 5
 #define LARGO_NOMBRE_PERSONA 100
+#define CANT_MAX_PERSONAS 3
+#define DNI_MAX 99999999
+#define DNI_MIN 0
 
 typedef struct
 {

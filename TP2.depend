@@ -26,3 +26,40 @@
 
 1524021394 c:\users\nano\desktop\github\tp2\arrays.h
 
+1524197636 source:c:\users\admin\desktop\projects\tp2\arrays.c
+	"estructuras.h"
+
+1524193110 source:c:\users\admin\desktop\projects\tp2\funciones_generales.c
+	<stdio.h>
+	<stdlib.h>
+
+1524197122 source:c:\users\admin\desktop\projects\tp2\main.c
+	<stdio.h>
+	<stdlib.h>
+	"funciones_generales.h"
+	"estructuras.h"
+	"menus.h"
+	"procesamiento.h"
+
+1524070702 c:\users\admin\desktop\projects\tp2\funciones_generales.h
+
+1524195506 c:\users\admin\desktop\projects\tp2\estructuras.h
+
+1524070702 c:\users\admin\desktop\projects\tp2\menus.h
+
+1524191646 source:c:\users\admin\desktop\projects\tp2\menus.c
+	<stdio.h>
+	"estructuras.h"
+	"arrays.h"
+	"funciones_generales.h"
+
+1524196213 c:\users\admin\desktop\projects\tp2\arrays.h
+
+1524196027 c:\users\admin\desktop\projects\tp2\procesamiento.h
+
+1524197711 source:c:\users\admin\desktop\projects\tp2\procesamiento.c
+	<stdio.h>
+	"funciones_generales.h"
+	"estructuras.h"
+	"arrays.h"
+
