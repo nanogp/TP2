@@ -1,10 +1,9 @@
 #ifndef GENERAL_H_INCLUDED
-#   define GENERAL_H_INCLUDED
-#   define DEFINIR_MACRO_STRING(nombre_macro) #nombre_macro
-#   define LIMPIAR_PANTALLA DEFINIR_MACRO_STRING(cls)
-#   define HACER_PAUSA DEFINIR_MACRO_STRING(pause)
-#   define LARGO_TITULO 1000
-#endif // GENERAL_H_INCLUDED
+#define GENERAL_H_INCLUDED
+#define DEFINIR_MACRO_STRING(nombre_macro) #nombre_macro
+#define LIMPIAR_PANTALLA DEFINIR_MACRO_STRING(cls)
+#define HACER_PAUSA DEFINIR_MACRO_STRING(pause)
+#define LARGO_TITULO 1000
 
 /** \brief corre comandos en la consola del sistema operativo
  *
@@ -134,3 +133,5 @@ void generarTitulo(char[]);
  *
  */
 void imprimirTitulo(const char[]);
+
+#endif // GENERAL_H_INCLUDED

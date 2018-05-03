@@ -29,3 +29,33 @@
 	"Persona.h"
 	"General.h"
 
+1525359559 source:d:\github\tp2\general.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"General.h"
+
+1525359919 d:\github\tp2\general.h
+
+1525359559 source:d:\github\tp2\menu.c
+	<stdio.h>
+	"Menu.h"
+	"General.h"
+
+1525359946 d:\github\tp2\menu.h
+
+1525361380 source:d:\github\tp2\main.c
+	<stdio.h>
+	<stdlib.h>
+	"General.h"
+	"Menu.h"
+	"Persona.h"
+
+1525363681 d:\github\tp2\persona.h
+
+1525364238 source:d:\github\tp2\persona.c
+	<stdio.h>
+	<string.h>
+	"Persona.h"
+	"General.h"
+

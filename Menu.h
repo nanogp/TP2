@@ -1,17 +1,15 @@
 #ifndef MENU_H_INCLUDED
-#   define MENU_H_INCLUDED
-#   define LARGO_ITEM_MENU 100
-#   define NRO_MAX_OPCIONES_MENU 10
+#define MENU_H_INCLUDED
+#define LARGO_ITEM_MENU 100
+#define NRO_MAX_OPCIONES_MENU 10
 
-    typedef struct
-    {
-        int cantOpciones;
-        int codigos[NRO_MAX_OPCIONES_MENU];
-        char descripciones[NRO_MAX_OPCIONES_MENU][LARGO_ITEM_MENU];
-        char titulo[LARGO_ITEM_MENU];
-    } eMenu;
-
-#endif // MENU_H_INCLUDED
+typedef struct
+{
+    int cantOpciones;
+    int codigos[NRO_MAX_OPCIONES_MENU];
+    char descripciones[NRO_MAX_OPCIONES_MENU][LARGO_ITEM_MENU];
+    char titulo[LARGO_ITEM_MENU];
+} eMenu;
 
 
 /** \brief muestra en pantalla un tipo de dato menu
@@ -30,3 +28,5 @@ void mostrarMenu(const eMenu menu);
  *
  */
 int pedirOpcion(const eMenu menu);
+
+#endif // MENU_H_INCLUDED

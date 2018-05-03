@@ -17,9 +17,9 @@ int main()
 
     ePersona listaPersonas[CANT_MAX_PERSONAS];
 
-    ePersona_init(listaPersonas);
+    ePersona_init(listaPersonas, CANT_MAX_PERSONAS);
 
-    ePersona_initHardcode(listaPersonas);
+    ePersona_initHardcode(listaPersonas); //comentar esta linea para que no se inicialice con datos de prueba
 
     do
     {
@@ -28,16 +28,16 @@ int main()
         switch(opcion)
         {
             case 1:
-                ePersona_procesarAlta(listaPersonas);
+                ePersona_procesarAlta(listaPersonas, CANT_MAX_PERSONAS);
                 break;
             case 2:
-                ePersona_procesarBaja(listaPersonas);
+                ePersona_procesarBaja(listaPersonas, CANT_MAX_PERSONAS);
                 break;
             case 3:
-                ePersona_procesarMostrarLista(listaPersonas);
+                ePersona_procesarMostrarLista(listaPersonas, CANT_MAX_PERSONAS);
                 break;
             case 4:
-                ePersona_procesarMostrarGrafico(listaPersonas);
+                ePersona_procesarMostrarGrafico(listaPersonas, CANT_MAX_PERSONAS);
                 break;
             case 9:
                 salirDelPrograma = pedirConfirmacion("Desea salir del programa?");
