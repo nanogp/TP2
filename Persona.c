@@ -25,11 +25,11 @@ void ePersona_initHardcode(ePersona lista[])
 	lista[3] = (ePersona) {{"Rodrigo Serna"}        ,76 ,13 ,OCUPADO};
 	lista[4] = (ePersona) {{"Lorena paola"}         ,18 ,14 ,OCUPADO};
 	lista[5] = (ePersona) {{"Juan Alberto Mateico"} ,56 ,15 ,OCUPADO};
-	lista[6] = (ePersona) {{"aquillego Bala"}       ,85 ,16 ,OCUPADO};
-	lista[7] = (ePersona) {{"ascensooooor"}         ,34 ,17 ,OCUPADO};
+	lista[6] = (ePersona) {{"aquillego Bala"}       ,15 ,16 ,OCUPADO};
+	lista[7] = (ePersona) {{"ascensooooor"}         ,14 ,17 ,OCUPADO};
 	lista[8] = (ePersona) {{"enrico palazzo"}       ,27 ,18 ,OCUPADO};
 	lista[9] = (ePersona) {{"mini me"}              ,57 ,19 ,OCUPADO};
-	lista[10] = (ePersona) {{"Austin Powers"}       ,35 ,20 ,OCUPADO};
+	lista[10] = (ePersona) {{"Austin Powers"}       ,15 ,20 ,OCUPADO};
 	lista[11] = (ePersona) {{"Austin sin power"}    ,75 ,21 ,OCUPADO};
 	lista[12] = (ePersona) {{"Fulano"}              ,43 ,22 ,OCUPADO};
 	lista[13] = (ePersona) {{"Mengano"}             ,56 ,23 ,OCUPADO};
@@ -39,9 +39,10 @@ void ePersona_initHardcode(ePersona lista[])
 	lista[17] = (ePersona) {{"No es sano"}          ,56 ,27 ,OCUPADO};
 	lista[18] = (ePersona) {{"programar hasta"}     ,18 ,28 ,OCUPADO};
 	lista[19] = (ePersona) {{"tan tarde"}           ,16 ,29 ,OCUPADO};
-    //3 edad < 18
-    //7 18 < edad < 35
-    //10 edad > 35
+    //6 edad < 18
+    //5 18 < edad < 35
+    //9 edad > 35
+    ePersona_ordenar(lista, "nombreAsc");
 }
 
 void ePersona_mostrarUno(const ePersona persona)
@@ -80,7 +81,7 @@ void ePersona_ordenar(ePersona lista[], const char orden[])
 		{
 			for(j=i+1 ; j<CANT_MAX_PERSONAS ; j++)
 			{
-				if(strcmp(lista[i].nombre, lista[j].nombre) > 0)
+				if(strcmpi(lista[i].nombre, lista[j].nombre) > 0)
 				{
 					aux = lista[i];
 					lista[i] = lista[j];
@@ -95,7 +96,7 @@ void ePersona_ordenar(ePersona lista[], const char orden[])
 		{
 			for(j=i+1 ; j<CANT_MAX_PERSONAS ; j++)
 			{
-				if(strcmp(lista[i].nombre, lista[j].nombre) < 0)
+				if(strcmpi(lista[i].nombre, lista[j].nombre) < 0)
 				{
 					aux = lista[i];
 					lista[i] = lista[j];
@@ -325,14 +326,85 @@ void ePersona_recuentoEdadesPorRango(const ePersona lista[], int contadores[])
 void ePersona_procesarMostrarGrafico(const ePersona lista[])
 {
     int contadoresEdades[] = {0,0,0};
+    int mayorContador = 0;
+    int i;
 
     ejecutarEnConsola(LIMPIAR_PANTALLA);
     imprimirTitulo("GRAFICO DE BARRAS POR EDAD");
 
     ePersona_recuentoEdadesPorRango(lista, contadoresEdades);
-    printf("\ncontadoresEdades[0] = %d", contadoresEdades[0]);
-    printf("\ncontadoresEdades[1] = %d", contadoresEdades[1]);
-    printf("\ncontadoresEdades[2] = %d", contadoresEdades[2]);
+    mayorContador = contadoresEdades[0];
+
+    //busco valor mas grande de contador para dibujar luego
+    for(i=0 ; i<3 ; i++)
+    {
+        if(contadoresEdades[i] > mayorContador)
+        {
+            mayorContador = contadoresEdades[i];
+        }
+    }
+
+    //procedo a dibujar
+    for(i=mayorContador ; i>0 ; i--)
+    {
+        if(contadoresEdades[0] >= i)
+        {
+            if(contadoresEdades[1] >= i)
+            {
+                if(contadoresEdades[2] >= i)
+                {
+                    //dibuja los 3
+                    printf("\n *    *    *");
+                }
+                else
+                {
+                    //dibuja los 2 primeros
+                    printf("\n *    *");
+                }
+            }
+            else
+            {
+                if(contadoresEdades[2] >= i)
+                {
+                    //dibuja el 1ero y el 3ro
+                    printf("\n *         *");
+                }
+                else
+                {
+                    //dibuja solo el primero
+                    printf("\n *");
+                }
+            }
+        }
+        else
+        {
+            if(contadoresEdades[1] >= i)
+            {
+                if(contadoresEdades[2] >= i)
+                {
+                    //dibuja los 2 ultimos
+                    printf("\n      *    *");
+                }
+                else
+                {
+                    //dibuja solo el del medio
+                    printf("\n      *");
+                }
+            }
+            else
+            {
+                //dibuja solo el ultimo
+                printf("\n           *");
+            }
+        }
+    }
+
+    //muestro el pie de grafico
+    printf("\n<18 18-35 >35");
+    printf("\nGrafico para una estad¡stica de %d personas con edad menor a 18,\n%d personas con edades entre 18 y 35, y %d personas con edades mayores a 35"
+           ,contadoresEdades[0]
+           ,contadoresEdades[1]
+           ,contadoresEdades[2]);
 
     ejecutarEnConsola(HACER_PAUSA);
 }
