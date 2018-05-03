@@ -16,6 +16,34 @@ void ePersona_init(ePersona lista[])
     }
 };
 
+void ePersona_initHardcode(ePersona lista[])
+{
+                            /*nombre               ,edad, dni*/
+	lista[0] = (ePersona) {{"juan perez"}           ,21 ,10 ,OCUPADO};
+	lista[1] = (ePersona) {{"perica sanchez"}       ,34 ,11 ,OCUPADO};
+	lista[2] = (ePersona) {{"esteban quito"}        ,52 ,12 ,OCUPADO};
+	lista[3] = (ePersona) {{"Rodrigo Serna"}        ,76 ,13 ,OCUPADO};
+	lista[4] = (ePersona) {{"Lorena paola"}         ,18 ,14 ,OCUPADO};
+	lista[5] = (ePersona) {{"Juan Alberto Mateico"} ,56 ,15 ,OCUPADO};
+	lista[6] = (ePersona) {{"aquillego Bala"}       ,85 ,16 ,OCUPADO};
+	lista[7] = (ePersona) {{"ascensooooor"}         ,34 ,17 ,OCUPADO};
+	lista[8] = (ePersona) {{"enrico palazzo"}       ,27 ,18 ,OCUPADO};
+	lista[9] = (ePersona) {{"mini me"}              ,57 ,19 ,OCUPADO};
+	lista[10] = (ePersona) {{"Austin Powers"}       ,35 ,20 ,OCUPADO};
+	lista[11] = (ePersona) {{"Austin sin power"}    ,75 ,21 ,OCUPADO};
+	lista[12] = (ePersona) {{"Fulano"}              ,43 ,22 ,OCUPADO};
+	lista[13] = (ePersona) {{"Mengano"}             ,56 ,23 ,OCUPADO};
+	lista[14] = (ePersona) {{"Sultano"}             ,12 ,24 ,OCUPADO};
+	lista[15] = (ePersona) {{"Butano"}              ,43 ,25 ,OCUPADO};
+	lista[16] = (ePersona) {{"Un tano"}             ,2  ,26 ,OCUPADO};
+	lista[17] = (ePersona) {{"No es sano"}          ,56 ,27 ,OCUPADO};
+	lista[18] = (ePersona) {{"programar hasta"}     ,18 ,28 ,OCUPADO};
+	lista[19] = (ePersona) {{"tan tarde"}           ,16 ,29 ,OCUPADO};
+    //3 edad < 18
+    //7 18 < edad < 35
+    //10 edad > 35
+}
+
 void ePersona_mostrarUno(const ePersona persona)
 {
     printf("\n%-20s | edad: %d | dni: %d", persona.nombre, persona.edad, persona.dni);
@@ -154,6 +182,20 @@ int ePersona_buscarPorDni(ePersona lista[], const int dni)
     return retorno;
 }
 
+int ePersona_buscarSiYaExiste(ePersona lista[], ePersona registro)
+{
+    int retorno;
+
+    retorno = ePersona_buscarPorDni(lista, registro.dni);
+    if(retorno != -1)
+    {
+        imprimirEnPantalla("El registro con ese DNI ya existe en la lista como:");
+        ePersona_mostrarUno(lista[retorno]);
+    }
+
+    return retorno;
+}
+
 void ePersona_alta(ePersona lista[], ePersona registro, const int posicion)
 {
     lista[posicion] = registro;
@@ -169,6 +211,7 @@ void ePersona_procesarAlta(ePersona lista[])
 {
     char confimacion;
     int posicion;
+    int existePreviamente;
     ePersona registroAlta;
 
     ejecutarEnConsola(LIMPIAR_PANTALLA);
@@ -183,17 +226,23 @@ void ePersona_procesarAlta(ePersona lista[])
     else
     {
         registroAlta = ePersona_pedirPersona();
-        ePersona_mostrarUno(registroAlta);
-        confimacion = pedirConfirmacion("\nConfirma que desea dar de alta la persona?");
 
-        if(confimacion == 'S')
+        existePreviamente = ePersona_buscarSiYaExiste(lista, registroAlta);
+
+        if(existePreviamente == -1)
         {
-            ePersona_alta(lista, registroAlta, posicion);
-            imprimirEnPantalla("\nSe dio de alta la persona ingresada");
-        }
-        else
-        {
-            imprimirEnPantalla("\nSe cancelo la operatoria. No se hicieron cambios");
+            ePersona_mostrarUno(registroAlta);
+            confimacion = pedirConfirmacion("\nConfirma que desea dar de alta la persona?");
+
+            if(confimacion == 'S')
+            {
+                ePersona_alta(lista, registroAlta, posicion);
+                imprimirEnPantalla("\nSe dio de alta la persona ingresada");
+            }
+            else
+            {
+                imprimirEnPantalla("\nSe cancelo la operatoria. No se hicieron cambios");
+            }
         }
     }
 
@@ -247,5 +296,43 @@ void ePersona_procesarMostrarLista(const ePersona lista[])
     ejecutarEnConsola(HACER_PAUSA);
 }
 
+void ePersona_recuentoEdadesPorRango(const ePersona lista[], int contadores[])
+{
+    int i;
 
-//void ePersona_procesarMostrarGrafico(const ePersona lista[])
+    for(i=0 ; i<CANT_MAX_PERSONAS ; i++)
+    {
+        if(lista[i].edad < 18)
+        {
+            contadores[0]++;
+        }
+        else
+        {
+            if(lista[i].edad > 35)
+            {
+                contadores[2]++;
+            }
+            else
+            {
+                //edad entre 18 y 35 años
+                contadores[1]++;
+            }
+        }
+    }
+
+}
+
+void ePersona_procesarMostrarGrafico(const ePersona lista[])
+{
+    int contadoresEdades[] = {0,0,0};
+
+    ejecutarEnConsola(LIMPIAR_PANTALLA);
+    imprimirTitulo("GRAFICO DE BARRAS POR EDAD");
+
+    ePersona_recuentoEdadesPorRango(lista, contadoresEdades);
+    printf("\ncontadoresEdades[0] = %d", contadoresEdades[0]);
+    printf("\ncontadoresEdades[1] = %d", contadoresEdades[1]);
+    printf("\ncontadoresEdades[2] = %d", contadoresEdades[2]);
+
+    ejecutarEnConsola(HACER_PAUSA);
+}

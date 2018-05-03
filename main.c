@@ -19,14 +19,7 @@ int main()
 
     ePersona_init(listaPersonas);
 
-    ePersona p1 = {{"juan perez"}, 21, 12, OCUPADO};
-    ePersona p2 = {{"perica sanchez"}, 18, 13, OCUPADO};
-    ePersona p3 = {{"esteban quito"}, 56, 14, OCUPADO};
-
-    listaPersonas[0]=p1;
-    listaPersonas[1]=p2;
-    listaPersonas[2]=p3;
-
+    ePersona_initHardcode(listaPersonas);
 
     do
     {
@@ -44,8 +37,7 @@ int main()
                 ePersona_procesarMostrarLista(listaPersonas);
                 break;
             case 4:
-                imprimirEnPantalla(menuPrincipal.descripciones[opcion]);ejecutarEnConsola(HACER_PAUSA);
-                //ePersona_procesarMostrarGrafico(listaPersonas);
+                ePersona_procesarMostrarGrafico(listaPersonas);
                 break;
             case 9:
                 salirDelPrograma = pedirConfirmacion("Desea salir del programa?");

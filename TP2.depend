@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1525316677 source:c:\github\tp2\general.c
+1525318492 source:c:\github\tp2\general.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -14,16 +14,16 @@
 
 1525309532 c:\github\tp2\menu.h
 
-1525317097 source:c:\github\tp2\main.c
+1525319990 source:c:\github\tp2\main.c
 	<stdio.h>
 	<stdlib.h>
 	"General.h"
 	"Menu.h"
 	"Persona.h"
 
-1525316923 c:\github\tp2\persona.h
+1525320013 c:\github\tp2\persona.h
 
-1525317064 source:c:\github\tp2\persona.c
+1525320329 source:c:\github\tp2\persona.c
 	<stdio.h>
 	<string.h>
 	"Persona.h"

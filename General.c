@@ -3,13 +3,13 @@
 #include <string.h>
 #include "General.h"
 
-void ejecutarEnConsola(const char *lineaDeComando)
+void ejecutarEnConsola(const char lineaDeComando[])
 {
     printf("\n");
     system(lineaDeComando);
 }
 
-char pedirConfirmacion(const char *mensajeAlUsuario)
+char pedirConfirmacion(const char mensajeAlUsuario[])
 {
     char retorno;
 
@@ -93,14 +93,14 @@ float pedirFloatValido(const char mensajeIngreso[], const char mensajeReingreso[
     return retorno;
 }
 
-void pedirString(char *retorno, const char mensajeIngreso[])
+void pedirString(char retorno[], const char mensajeIngreso[])
 {
     printf("%s", mensajeIngreso);
     fflush(stdin);
     gets(retorno);
 }
 
-void pedirStringValido(char *retorno, const char mensajeIngreso[], const char mensajeReingreso[], const int limite)
+void pedirStringValido(char retorno[], const char mensajeIngreso[], const char mensajeReingreso[], const int limite)
 {
     char stringIngresado[1000];
 
@@ -141,12 +141,12 @@ int buscarEnArrayInt(const int buscar, const int array[], const int cant)
     return retorno;
 }
 
-void imprimirEnPantalla(const char *texto)
+void imprimirEnPantalla(const char texto[])
 {
     printf("%s", texto);
 }
 
-void generarTitulo(char *texto)
+void generarTitulo(char texto[])
 {
     int i;
     char nuevoTitulo[LARGO_TITULO] = "| ";
@@ -172,7 +172,7 @@ void generarTitulo(char *texto)
 
 }
 
-void imprimirTitulo(const char *texto)
+void imprimirTitulo(const char texto[])
 {
     char titulo[LARGO_TITULO];
     strcpy(titulo, texto);
