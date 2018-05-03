@@ -31,26 +31,21 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="arrays.c">
+		<Unit filename="General.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="arrays.h" />
-		<Unit filename="estructuras.h" />
-		<Unit filename="funciones_generales.c">
+		<Unit filename="General.h" />
+		<Unit filename="Menu.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="funciones_generales.h" />
+		<Unit filename="Menu.h" />
+		<Unit filename="Persona.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Persona.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="menus.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="menus.h" />
-		<Unit filename="procesamiento.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="procesamiento.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
