@@ -8,7 +8,10 @@
 #define DNI_MIN 0
 #define EDAD_MAX 200
 #define EDAD_MIN 0
-#define CANT_GRUPOS_GRAFICO 3
+#define NUM_GRUPOS_ETARIOS 3
+#define CONTADOR_MENORES_18 0
+#define CONTADOR_18_A_35 1
+#define CONTADOR_MAYORES_35 2
 
 typedef struct
 {

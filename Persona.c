@@ -340,18 +340,20 @@ void ePersona_recuentoEdadesPorRango(const ePersona lista[], const int limite, i
         {
             if(lista[i].edad < 18)
             {
-                contadores[0]++;
+                contadores[CONTADOR_MENORES_18]++;
             }
             else
             {
                 if(lista[i].edad > 35)
                 {
-                    contadores[2]++;
+                    contadores[CONTADOR_MAYORES_35]++;
                 }
                 else
                 {
+                    //ATENCION: ACA ASUMO QUE EL ENUNCIADO DEL PROBLEMA NO CONTEMPLO EL CASO DE 18 AÑOS
+                    //PARA LO CUAL LO INCLUYO EN EL GRUPO DEL MEDIO
                     //edad entre 18 y 35 años
-                    contadores[1]++;
+                    contadores[CONTADOR_18_A_35]++;
                 }
             }
         }
@@ -364,7 +366,7 @@ int ePersona_getMayorContador(const int contadores[])
     int i;
 
     //busco valor mas grande de contador para dibujar luego
-    for(i=0 ; i<CANT_GRUPOS_GRAFICO ; i++)
+    for(i=0 ; i<NUM_GRUPOS_ETARIOS ; i++)
     {
         if(contadores[i] > retorno || i == 0)
         {
@@ -382,11 +384,11 @@ void ePersona_dibujarGrafico(const int contadores[], const int limite)
     //procedo a dibujar
     for(i=limite ; i>0 ; i--)
     {
-        if(contadores[0] >= i)
+        if(contadores[CONTADOR_MENORES_18] >= i)
         {
-            if(contadores[1] >= i)
+            if(contadores[CONTADOR_18_A_35] >= i)
             {
-                if(contadores[2] >= i)
+                if(contadores[CONTADOR_MAYORES_35] >= i)
                 {
                     //dibuja los 3
                     printf("\n *    *    *");
@@ -399,7 +401,7 @@ void ePersona_dibujarGrafico(const int contadores[], const int limite)
             }
             else
             {
-                if(contadores[2] >= i)
+                if(contadores[CONTADOR_MAYORES_35] >= i)
                 {
                     //dibuja el 1ero y el 3ro
                     printf("\n *         *");
@@ -413,9 +415,9 @@ void ePersona_dibujarGrafico(const int contadores[], const int limite)
         }
         else
         {
-            if(contadores[1] >= i)
+            if(contadores[CONTADOR_18_A_35] >= i)
             {
-                if(contadores[2] >= i)
+                if(contadores[CONTADOR_MAYORES_35] >= i)
                 {
                     //dibuja los 2 ultimos
                     printf("\n      *    *");
@@ -437,14 +439,14 @@ void ePersona_dibujarGrafico(const int contadores[], const int limite)
     //muestro el pie de grafico
     printf("\n<18 18-35 >35");
     printf("\nGrafico para una estad¡stica de %d personas con edad menor a 18,\n%d personas con edades entre 18 y 35, y %d personas con edades mayores a 35"
-           ,contadores[0]
-           ,contadores[1]
-           ,contadores[2]);
+           ,contadores[CONTADOR_MENORES_18]
+           ,contadores[CONTADOR_18_A_35]
+           ,contadores[CONTADOR_MAYORES_35]);
 }
 
 void ePersona_procesarMostrarGrafico(const ePersona lista[], const int limite)
 {
-    int contadoresEdades[CANT_GRUPOS_GRAFICO] = {0,0,0};
+    int contadoresEdades[NUM_GRUPOS_ETARIOS] = {0,0,0};
     int mayorContador;
 
     ejecutarEnConsola(LIMPIAR_PANTALLA);
